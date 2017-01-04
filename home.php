@@ -69,12 +69,12 @@
         </tbody>
       </table>
     </div>
-
+https://github.com/drakamaleon/registro-Voluntario.git
     <!-- Modal -->
     <div class="modal fade" id="modalVoluntarios" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form>
+          <form method="post" action="procesar-registro.php">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title">Ingresar Voluntario</h4>
@@ -84,13 +84,18 @@
                   <input type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Nombre">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="inputCiudad" name="inputCiudad" placeholder="Ciudad">
+                  <select name="ciudad">
+                    <option value="gquil">Guayaquil</option>
+                    <option value="qui">Quito</option>
+                    <option value="cue">Cuenca</option>
+                    <option value="mant">Manta</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" id="inputTelefono" name="inputTelefono" placeholder="Telefono">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="inputEdad" name="inputEdad" placeholder="Edad">
+                  <input type="number" min="0" class="form-control" id="inputEdad" name="inputEdad" placeholder="Edad">
                 </div>
             </div>
             <div class="modal-footer">
