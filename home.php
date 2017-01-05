@@ -45,6 +45,43 @@
           </tr>
         </thead>
         <tbody>
+          
+          <?php 
+            $hotsdb = "localhost";    // sera el valor de nuestra BD
+            $basededatos = "voluntarios";    // sera el valor de nuestra BD
+
+            $usuariodb = "root";    // sera el valor de nuestra BD
+            $clavedb = "";    // sera el valor de nuestra BD
+
+            $tabla_db1 = "voluntarios";    // sera el valor de una tabla
+            
+
+        // Fin de los parametros a configurar para la conexion de la base de datos
+
+            $conexion_db = mysql_connect("$hotsdb","$usuariodb","$clavedb")
+            or die ("Conexión denegada, el Servidor de Base de datos que solicitas NO EXISTE");
+            $db = mysql_select_db("$basededatos", $conexion_db)
+            or die ("La Base de Datos <b>$basededatos</b> NO EXISTE");
+
+              $query = "select * from $tabla_db1";     // Esta linea hace la consulta
+              $result = mysql_query($query); 
+
+              while ($registro = mysql_fetch_array($result)){ 
+          echo " 
+              <tr> 
+                <td scope='row'>".$registro['id']."</td> 
+                <td>".$registro['nombre']."</td> 
+                <td>".$registro['ciudad']."</td> 
+                <td>".$registro['telefono']."</td> 
+                <td>".$registro['edad']."</td> 
+
+              </tr> 
+          "; 
+          } 
+          mysql_close($conexion_db);
+          ?>  
+
+          <!--
           <tr>
             <th scope="row">1</th>
             <td>Juan Perez</td>
@@ -52,24 +89,12 @@
             <td>0987961212</td>
             <td>31</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Rodrigo Segovia</td>
-            <td>Quito</td>
-            <td>0978989891</td>
-            <td>28</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Jose Sanchez</td>
-            <td>Guayaquil</td>
-            <td>0912322321</td>
-            <td>21</td>
-          </tr>
+
+            -->
         </tbody>
       </table>
     </div>
-https://github.com/drakamaleon/registro-Voluntario.git
+
     <!-- Modal -->
     <div class="modal fade" id="modalVoluntarios" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
@@ -85,10 +110,10 @@ https://github.com/drakamaleon/registro-Voluntario.git
                 </div>
                 <div class="form-group">
                   <select name="ciudad">
-                    <option value="gquil">Guayaquil</option>
-                    <option value="qui">Quito</option>
-                    <option value="cue">Cuenca</option>
-                    <option value="mant">Manta</option>
+                    <option value="Guayaquil">Guayaquil</option>
+                    <option value="Quito">Quito</option>
+                    <option value="Cuenca">Cuenca</option>
+                    <option value="Manta">Manta</option>
                   </select>
                 </div>
                 <div class="form-group">
